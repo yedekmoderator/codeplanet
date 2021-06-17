@@ -1,2 +1,2 @@
-# codeplanet
+# CodePlanet
 CodePlanet official website repository.
