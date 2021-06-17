@@ -300,34 +300,6 @@ app.post(
   }
 );
 
-app.post("/status", async (req, res) => {
-  let status = req.body.status;
-  let change_name = req.body.change_name;
-  let changedName = change_name.concat("@gmail.com");
-
-  if (change_name) {
-    User.updateOne(
-      { _id: req.user.id },
-      { $set: { username: changedName } },
-      function(err, doc) {
-        if (err) throw err;
-        console.log(doc);
-      }
-    );
-  }
-
-  if (status) {
-    User.updateOne(
-      { username: req.user.username },
-      { $set: { status: status } },
-      function(err, doc) {
-        console.log(doc);
-      }
-    );
-  }
-
-  res.redirect("back");
-});
 
 app.post("/register", async (req, res) => {
   let { username, email, password } = req.body;
@@ -335,22 +307,18 @@ app.post("/register", async (req, res) => {
     return;
   }
 
-  User.count({ username: username }),
-    function(err, count) {
-      if (count > 0) {
-        res.redirect("back");
-      } else {
-        let useropt = new User({
-          username: username,
-          email: email,
-          password: password
+    let user = await User.findOne({ email: req.body.email });
+    if (user) {
+        return res.redirect("back")
+    } else {
+        user = new User({
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password
         });
-
-        useropt.save().then(() => {
-          res.redirect("/login");
-        });
-      }
-    };
+        await user.save();
+        res.redirect("/login")
+    }
 });
 
 
@@ -452,10 +420,7 @@ app.get("/chat", authorized, async (req, res) =>
   res.render("chat", {
     user: req.user,
     clients: clients,
-    vipKeys: vipKeys,
-    totalUsers: client.guilds
-      .reduce((a, b) => a + b.memberCount, 0)
-      .toLocaleString()
+    vipKeys: vipKeys
   })
 );
 
