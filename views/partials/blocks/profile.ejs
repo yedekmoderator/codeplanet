@@ -1,0 +1,32 @@
+<link rel = "stylesheet" href = "stil.css">
+<div class = "user-dash">
+  <div class = "profile-photo">
+    <img width = "100px;" src = "<%= user.avatar %>">
+  </div>
+  <div class = "information">
+    İstifadəçi adı : <%= user.username %><br>
+    E-poçt : <%= user.email %><br>
+    Status : <%= user.status %><br>
+  </div>
+</div>
+<style>
+  .information {
+    width : 700px;
+    height : 400px;
+    background : white;
+    color : black;
+    border-radius : 5px;
+    font-size : 35px;
+    text-align : center;
+  }
+  
+  .profile-photo {
+    border-radius : 50%;
+    position : relative;
+    left : 800px;
+  }
+  
+  img {
+    border-radius : 50%;
+  }
+</style>

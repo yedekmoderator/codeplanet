@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partials/blocks/menu.ejs') %>
+    <div align = "center">
+      <script src="https://kit.fontawesome.com/10a3b2acf9.js" crossorigin="anonymous"></script>
+    </div>
+    </head><br><br>
+    <body>
+      <main>
+      <div align = "center" class = "register">
+        <form action = "/register" method = "POST" id = "formreg">
+          <i class="fas fa-address-card"></i> Hesab yaradın.<br><br>
+      <input type = "text" placeholder = "İstifadəçi adı" name = "username"><br><br>
+      <input type = "email" placeholder = "E-mail" name = "email"><br><br>
+      <input type = "password" placeholder = "Şifrə" name = "password"><br><br>
+      <button id = "register">Hesab yarat</button>
+        </form>
+        <br><br>
+        Əgər hesabın varsa,<a href = "/login">giriş et</a>.
+      </div></br><br>
+      </main>
+      <div align = "center">
+        <p class = "registered"><i class="fas fa-check"></i> Yönləndirilirsiniz! </p>
+   </div>
+    </body>
+  <style>
+    .register {
+      font-size : 30px;
+      padding : 10px;
+      border-radius : 6px;
+      justify-content : center;
+      width : 25rem;
+      background : white;
+      padding : 50px;
+      margin : 150px auto;
+      transform : scale(1.46);
+      color : black;
+    }
+    
+    #register {
+      font-size : 25px;
+    }
+    
+    .registered {
+      position : fixed;
+      bottom : 0;
+      right : 0;
+      padding : 25px;
+      border-radius : 8px;
+      color : white;
+      display : none;
+      background : green;
+    }
+    
+    .register a {
+      color : dodgerBlue;
+    }
+  </style>
+ <link rel = "stylesheet" href = "stil.css">
+  </html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partials/blocks/menu.ejs') %>
+    <script src="https://kit.fontawesome.com/10a3b2acf9.js" crossorigin="anonymous"></script>
+    <title>Report</title>
+    <div align="center">
+     <strong> İdea və Bug Report yerinə xoş gəlmişsiniz!Burada bizə saytdaki xətaları və
+      ya saytda hansı yeniliyi istədiyinizi yaza bilərsiniz! Cavab sizə E-mail
+      olaraq atılacaq! <br /><br />
+      Cavab verilmə müddəti ( Minimum ) : 1 saat<br /><br />
+      Cavab verilmə müddəti ( Maksimum ) : 1 həftə<br /><br />
+      
+      <em>Dip Not : E-mail daxil edərkən çalışın gerçək e-mail daxil edəsiniz, yoxsa heç cürə sizə kömək edə bilməyəcəyik.</em><br></strong>
+    </div>
+  </head><br>
+  <body>
+    <div align="center" id="container">
+      <div align="center">
+        <form action = "/report" method="POST" class = "form">
+        <input
+          id="bug-value"
+          type="text"
+          placeholder="Xəta Bildir"
+          name = "bugvalue"
+          required
+        /><br /><br />
+        <input required id="bug-mail" type="email" placeholder="E-mail" name ="bugmail"/><br /><br />
+        <button onclick = "bug()" id="bug"><strong>Bildir</strong></button><br />
+          <p class = "done"><i class="fas fa-check"></i>&nbsp;Uğurlu!</p>
+        </form>
+      </div><br>
+      <form action = "/idea" method="POST" class = "form">
+      <div align="center">
+        <input
+          id="idea-value"
+          type="text"
+          placeholder="İdea Bildir"
+          name = "ideavalue"
+        /><br /><br />
+        <input name = "ideamail" id="idea-mail" type="email" placeholder="E-mail" /><br /><br />
+        <button id="idea" onclick = "show()"><strong>Bildir</strong></button>
+      </div>
+      </form>
+    </div>
+  </body>
+  <link rel="stylesheet" href="stil.css" />
+  <script>
+    document.querySelector(".form").addEventListener("submit", (e) =>{
+      e.preventDefault()
+    })
+    
+    function show(){
+      document.querySelector(".done").style.display = "block";
+    }
+    
+    function bug(){
+      if(document.getElementById("bug-mail").value.split("@").pop() = "gmail.com"){
+        return alert("E-mail yerini doldurun!")
+      }
+    }
+  </script>
+  <script src = "server.js"></script>
+  <style>
+    #container {
+      background: white;
+      padding: 7rem;
+      border-radius: 5px;
+      color : black;
+    }
+    
+    .done {
+      color : black;
+      border : 2px solid #228c25;
+      background : #22bd27;
+      padding : 10px;
+      border-radius : 9px;
+      display : none;
+    }
+  </style>
+  <script src="script.js"></script>
+</html>

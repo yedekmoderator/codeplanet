@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partials/blocks/menu.ejs') %>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <div id = "axtar" align = "center">
+      <h1>İstədiyin istifadəçinin adını yazaraq onun məlumatlarını görüntülə.</h1><br>
+      <form action = "/search" method = "POST">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input name = "data" placeholder = "İstifadəçi adı">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button id = "search">Axtar</button>
+        <%- include('partials/errors.ejs') %>
+      </form>
+    </div>
+    <div align="center">
+      <link rel="stylesheet" href="/stil.css" />
+       <%- include('partials/blocks/profile.ejs') %>
+    </div>
+  </head>
+  <body>
+  </body>
+  <script src = "script.js"></script>
+  <style>
+  </style>
+  <script src = "server.js"></script>
+</html>

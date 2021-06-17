@@ -1,0 +1,187 @@
+<html>
+  <head>
+<link rel = "stylesheet" href = "stil.css">
+    <script src="https://kit.fontawesome.com/10a3b2acf9.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <%- include('partials/blocks/menu.ejs') %>
+    <div align = "center">
+      <br><br><br>
+      <span id = "title">
+        CodePlanet - Proqramlaşdırma Cəmiyyəti
+      </span>
+    </div>
+    <div class = "container">
+      <br><br>
+       <div class="card" style="width: 18rem;" align = "center">
+            <div class="card-body">
+              <h2 class="card-title">Müasir və sərfəli</h2>
+              <h6 class="card-subtitle mb-2 text-muted">Frameworks</h6>
+              <p class="card-text">CodePlanet müasir standartlara cavab verən frameworklar ilə kodlanıb.</p>
+              <a href="https://nodejs.org/en/" class="card-link">Node.js</a>
+            </div>
+          </div>
+      
+            <div class="card" style="width: 18rem;" align = "center">
+            <div class="card-body">
+              <h2 class="card-title">Sosiallaşma və Chat</h2>
+              <h6 class="card-subtitle mb-2 text-muted">Otaqlar</h6>
+              <p class="card-text">Proyektimizdə proqramlaşdırma ilə əlaqəli suallar, postlar və chat otaqları var.</p>
+              <a href="https://socket.io/" class="card-link">Socket.io</a>
+            </div>
+          </div>
+      
+          <div class="card" style="width: 18rem;" align = "center">
+            <div class="card-body">
+              <h2 class="card-title">Zəngin hesab konfiqurasiyası</h2>
+              <h6 class="card-subtitle mb-2 text-muted">Hesablar</h6>
+              <p class="card-text">Normal və premium tier hesablar ilə post limitlərini aşa, söhbət otaqlarında bir çox yeni özəlliklərə və daha çoxuna sahib ola bilərsiniz.</p>
+              <a href="https://neon-project.glitch.me/register" class="card-link">Hesab yarat</a>
+            </div>
+          </div>
+    </div>
+    <div class = "container-2" align = "center">
+      <div class = "container-2-left" align = "left">
+        <div id = "imgdiv">
+        <img height = "200px" width = "200px" src = "https://cdn.discordapp.com/attachments/823558223725461524/841664043445911571/GitHub-Mark.png">
+          </div>
+        <h2>
+          Bir çox lazımlı modulu özündə əks etdirən sadə proyektlərin repositoriyası GitHub səhifəmizdə yerləşir. Həmçinin bu proyektlər dərslərdə paylaşılacaq.<br><br>
+          Repositoryləri aşağıdaki komanda sətiri ilə kompüterinizə endirə bilərsiniz : <br>
+        </h2>
+        <div class = "editor">
+          <span id = "circle"></span>
+      <code>$<span class = "cursor"></span>git clone {repository}</code>
+        </div>
+      </div>
+      <div class = "container-2-right" align = "right">
+        <div id = "imgdiv2" align = "right">
+          <img src = "https://cdn.discordapp.com/attachments/823558223725461524/841740941086031882/1174215797dec302c416c52eaac5fc46.png" height = "200px" width = "200px">
+        </div>
+      </div>
+    </div>
+    <br><br><br>
+    <div class = "container-3">
+      <div class = "xeberler" align = "center">
+        <div class = "sound" align = "center">
+           @gameaniyt istifadəçisinin hesabına nəzər salın!&nbsp;<span id = "arrow"><i class="fas fa-arrow-right"></i></span>
+        </div>
+      </div>
+    </div>
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-performance.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyBh25YfczPghUHK9CLt7GvIPYPHPDbNkc8",
+    authDomain: "codeplanet-9ff69.firebaseapp.com",
+    projectId: "codeplanet-9ff69",
+    storageBucket: "codeplanet-9ff69.appspot.com",
+    messagingSenderId: "843542752011",
+    appId: "1:843542752011:web:8e70b697356292fdb4500e",
+    measurementId: "G-C2HNMFFMPE"
+  };
+firebase.initializeApp(firebaseConfig);
+      var analytics = firebase.analytics();
+      var perf = firebase.performance();
+</script>
+  </body>
+  <footer>
+   <section>
+    </section>
+  </footer>
+  <style>
+
+    .container-2 div {
+      display : inline-block;
+    }
+    
+    
+    
+    #title {
+      font-size : 90px;
+    }
+    
+    .container-2 {
+      background : white;
+      position : relative;
+      top : 50px;
+      height : 700px;
+    }
+    
+    .container-2-left {
+      width : 50%;
+      color : black;
+      padding : 25px;
+    }
+    
+    
+    .editor {
+      background : #0f0f0e;
+      color : white;
+      height : 70px;
+      width : 600px;
+      margin-left : 340px;
+      padding : 20px;
+      border-radius : 7px;
+      position : relative;
+      top : 30px;
+    }
+    
+    .editor code {
+      position : relative;
+      top : 15px;
+      left  : 100px;
+    }
+    
+     #imgdiv {
+      position : absolute;
+      top : 0;
+      left : 30px;
+      cursor : pointer;
+    }
+    
+    #imgdiv2 {
+      position : absolute;
+      top : 15px;
+      right : 30px;
+      cursor : pointer;
+    }
+    
+    .sound {
+      width : 1200px;
+      padding : 45px;
+      background : rgb(37,244,238);
+      border-radius : 8px;
+      color : black;
+    }
+    
+    #arrow {
+      transition : 0.7s ease;
+    }
+    
+    #arrow:hover {
+      position : relative;
+      left : 5px;
+      cursor : pointer;
+    }
+
+    #circle {
+        height: 25px;
+        width: 25px;
+        background-color: green;
+        border-radius: 50%;
+        display: inline-block;
+        position : absolute;
+  }
+  </style>
+  <script src = "script.js"></script>
+</html>

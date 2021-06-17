@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partials/blocks/menu.ejs') %>
+    <div align = "center">
+      <h1>Neon-Mail</h1>
+    </div>
+    <link rel = "stylesheet" href = "/stil.css">
+  </head>
+  <body>
+    <div align = "center">
+      <% userMails.forEach( mail =>{ %>
+      <div id = "mail">
+        <div id = "title"><h2><%= mail.title %></h2></div>
+        <div id = "date"><%= mail.date.toLocaleDateString() %></div>
+        <div id = "isRead"><%= mail.readen %></div>
+        <div id = "from"><%= mail.from %></div>
+        <button id = "go">Maili oxu</button>
+    </div>
+      <% }) %>
+    </div>
+  </body>
+    <style>
+      #mail {
+        width : 700px;
+        background : white;
+        height : 200px;
+        width : 800px;
+        border-radius : 8px;
+      }
+      
+      #mail div {
+        color : black;
+      }
+      
+      #date {
+        position : absolute;
+        right : 7rem;
+        top : 6rem;
+      }
+      
+      #from {
+        position : absolute;
+        left : 7rem;
+        top : 6rem;
+      }
+      
+      #isRead {
+        position : absolute;
+        top : 13rem;
+        right : 6rem;
+      }
+      
+      #go {
+        position : absolute;
+        top : 9rem;
+        right : 6rem;
+      }
+    </style>
+</html>

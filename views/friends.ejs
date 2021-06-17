@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('partials/blocks/menu.ejs') %>
+  <div align = "center">
+  <h1>Dostların.</h1>
+  </div>
+  <link rel = "stylesheet" href = "/stil.css">
+  </head>
+  <body>
+    <div align = "center">
+    <% friends.forEach( friend => { %>
+      <div id = "profile" align = "center">
+       <br><br><div id = "avatar"><img src = "<%= friend.avatar %>" height = "200px" width = "200px"></div>
+        <br><br><br><div id = "username"><h2>Adı : <%= friend.username.split("@").shift() %></h2></div>
+        <div id = "acc_id"><h2>Hesab ID : <%= friend.id %></h2></div>
+        <div id = "status"><h2>Status : <%= friend.status %></h2></div>
+      </div><br><br>
+    <% }) %>
+      </div>
+  </body>
+    <style>
+      #profile {
+        width : 600px;
+        height : 600px;
+        border-radius : 8px;
+        background : white;
+        color : black;
+        margin : auto;
+      }
+      
+      #profile div {
+        color : black;
+      }
+      
+      img {
+        border : 3px solid black;
+        border-radius : 100%;
+      }
+</html>

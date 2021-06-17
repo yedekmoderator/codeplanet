@@ -1,0 +1,92 @@
+<div align = "center" id = "user-cart">
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+  <h1>Adı : <%= user.username.split("@").shift() %><br><br>
+  Hesab ID : <%= user.id %><br><br>
+  Dərslər : Javascript<br><br>
+  Status : <%= user.status %><br><br>
+  Vəzifə : <%= user.username.split("@").shift() === "qtuncay40" ? "Sahib." : "İstifadəçi." %> </h1><br><br>
+  <div align = "center" id = "add">
+    <% if(!isFriend.includes(user.id)){ %>
+    <button onclick = "addFriend()" id = "add-friend">Dost siyahına əlavə et</button>
+    <% } else { %>
+    <h2>Siz artıq dostsunuz.</h2>
+    <% } %>
+  </div>
+</div>
+<style>
+  #user-cart {
+    background : white;
+    color : black;
+    padding : 15px;
+    border-radius : 10px;
+    margin : 400px auto;
+    width : 800px;
+    height : 1100px;
+    text-align : center;
+  }
+  
+  img {
+    position : relative;
+    bottom : 0;
+    border : 3px solid black;
+    border-radius : 10000px;
+  }
+  
+  #file { 
+    display : none;
+    width : 0;
+    height : 0;
+  }
+  
+  #pp {
+    position : relative;
+    font-weight : 400px;
+    top : 20px;
+    left : 280px;
+    padding : 30px;
+  }
+  
+  #cixis {
+    position : relative;
+    width : 205px;
+    height : 85px;
+    font-weight : 400px;
+    top : 75px;
+    left : 50px;
+    background : red;
+  }
+  
+  #add {
+    color : black;
+  }
+</style>
+<script src = "script.js"></script>
+<script>
+  var socket = io();
+  
+  function preview(){
+  
+  let file = document.querySelector("#file");
+  var reader = new FileReader();
+  let image = document.querySelector("#image")
+  
+     reader.addEventListener("load", function () {
+    // convert image file to base64 string
+    image.src = reader.result;
+    socket.emit("avatar", { url : window.location.href.split("/").pop(), fileUrl : reader.result });
+  }, false);
+
+  if (file) {
+   reader.readAsDataURL(file.files[0]);
+  }
+ 
+  }
+  
+  let add = document.getElementById("add");
+  
+  function addFriend(){
+    socket.emit("add-friend", { searchedUser : `<%= user.id %>`, reqUser : `<%= reqUser %>` });
+    
+    add.innerHTML = "Siyahıya əlavə olundu!";
+  }
+</script>

@@ -1,0 +1,17 @@
+<% if(typeof erroring != 'undefined'){ %>
+<% erroring.forEach(function(error) { %>
+<div align = "center" class = "error">
+<%= error.msg %><br>
+</div><br>
+<% }) %>
+<% } %>
+<style>
+  .error {
+   color : white;
+   padding : 5px 5px;
+   background : #193cff;
+   height : 50px;
+   width : 300px;
+   margin-top : 5px;
+ }
+</style>

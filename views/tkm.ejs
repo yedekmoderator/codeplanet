@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partials/blocks/menu.ejs') %>
+    <header>
+      <div align = "center">
+        Aşağıdaki şəkillərdən birisinə basaraq Neon-Project Robotu Project-Alphaya qarşı oyna!
+      </div>
+    </header>
+    <div align = "center" id = "score">
+      <p id = "board">
+        <span id = "user">İstifadəçi</span> 
+    <!--    <span id = "user-score">0</span>
+        <span id = "comp-score">0</span>
+-->
+        <span id = "comp">Project Alpha</span> 
+      </p>
+    </div>
+  </head>
+  <body>
+    <div align = "center">
+      <p id = "win"></p>
+      <p id = "choices">
+        <img id = "s" src = "https://cdn.glitch.com/2efe52c0-18bc-402b-a0c2-84ca7b4acba0%2Fal.png?v=1598130694183" width = "150px" height = "150px" class = "choice">
+        <img id = "p" src = "https://cdn.glitch.com/2efe52c0-18bc-402b-a0c2-84ca7b4acba0%2Famq.png?v=1598130700255" width = "150px" height = "150px" class = "choice">
+        <img id = "r" src = "https://cdn.glitch.com/2efe52c0-18bc-402b-a0c2-84ca7b4acba0%2F1598172824047.png?v=1598172916770" width = "150px" height = "150px" class = "choice">
+      </p>
+    </div><br>
+    <div align = "center">
+      <span id = "user-score">0</span>:<span id = "comp-score">0</span>
+    </div><br>
+    <div align = "center">
+      Qalibiyyətlər ( Project Alpha) : <span id = "winnerComp">0</span><br>
+      Qalibiyyətlər ( <span id = "u">Sən</span> ) : <span id = "winnerUser">0</span>
+    </div><br><br>
+    <div align = "center">
+      Bəs bu Rock-Paper-Scissor oyununu necə düzəltdik? Web Development-in əsas dillərindən birisi olan HTML ilə ( əslində bu, proqramlaşdırma dili sayılmır ), dizaynı CSS ilə, oyun proqramını isə JS ilə yazdıq. Qabaqdaki dərslərdə kodu paylaşacağam ( izahlı ).
+    </div>
+  </body>
+  <link rel = "stylesheet" href = "stil.css">
+  <script src = "game.js"></script>
+  <style>
+    * {
+      font-size : 25px;
+    }
+    
+    #choices {
+      margin : 50px 0;
+    }
+    
+    .choice {
+      border-radius : 200rem;
+      margin : 25px;
+      transition : 300ms all;
+      border : 3px solid white;
+      padding : 15px;
+    }
+    
+    #board {
+      border : 3px solid black;
+      width : 400px;
+      height : 100px;
+    }
+    
+    #user {
+      position : relative;
+     right : 140px;
+      top : 25px; 
+      background : red;
+      padding : 5px;
+      border-radius : 6px;
+    }
+    
+    #comp {
+      position : relative;
+      left : 120px;
+      top : 25px;
+      background : red;
+      padding : 5px;
+      border-radius : 6px;
+    }
+    
+    .choice:hover {
+      transform : scale(1.40);
+      background : white;
+    }
+  </style>
+</html>
+    

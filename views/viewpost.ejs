@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partials/blocks/menu.ejs') %>
+    <div align = "center">
+      <h1>Postun sahibi : <%= author.split("@").shift() %></h1>
+    </div>
+  </head>
+  <body>
+    <div id = "post">
+      <img src = "<%= data.avatar %>" height = "150px" width = "150px">
+      <div><h2><%= data.title %></h2></div>
+      <div><pre><%= data.description %></pre></div>
+    </div>
+    <div align = "center" id = "comment">
+      <textarea id = "makecomment" placeholder = "Cavab yaz."></textarea>
+    </div>
+  </body>
+  <link rel = "stylesheet" href = "/stil.css">
+  <style>
+    #post {
+      background : white;
+      width : 500px;
+      height : 300px;
+      border-radius : 8px;
+      margin : 500px auto;
+      color : black;
+      transform : scale(1.5);
+      justify-content : center;
+      overflow : scroll;
+    }
+    
+    #comment { 
+      position : relative;
+      bottom : -200px;
+    }
+    
+    #makecomment {
+      width : 700px;
+    }
+    
+    #post div {
+      color : black;
+      margin-left : 10px;
+     }
+  </style>
+</html>

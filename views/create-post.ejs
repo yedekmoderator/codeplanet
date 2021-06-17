@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partials/blocks/menu.ejs') %>
+    <link rel = "stylesheet" href = "stil.css">
+    <div align = "center">
+      <h1>Burada Neon Project istifadəçiləri proqramlaşdırma haqqında sual və ya problemlərini yazırlar.</h1>
+    </div>
+  </head>
+  <body>
+    <div align = "center" id = "form">
+      <form action = "/post" method = "POST">
+        <br><br><br><input name = "title" id = "title" placeholder = "Başlıq"><br><br>
+        <input name = "short_desc" id = "shortdesc"><br><br>
+        <textarea name = "description" id = "desc" placeholder = "Açıqlama"></textarea><br><br>
+        <button id = "createNote">Qur</button>
+      </form>
+    </div>
+  </body>
+  <style>
+    #form {
+    background : white;
+    border-radius : 8px;
+    height : 500px;
+    width : 500px;
+    margin : 400px auto;
+    transform : scale(1.5);
+  }
+    
+    #createNote {
+      position : relative;
+      top : 80px;
+      left : 160px;
+    }
+  </style>
+</html>

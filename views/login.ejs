@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partials/blocks/menu.ejs') %>
+    <div align = "center">
+      <script src="https://kit.fontawesome.com/10a3b2acf9.js" crossorigin="anonymous"></script>
+    </div>
+    </head>
+    <body>
+      <main>
+      <div align = "center" class = "register">
+        <form action = "/login" method = "POST" id = "formreg">
+          <i class="fas fa-address-card"></i> Giriş edin.<br><br>
+      <input type = "email" placeholder = "E-mail" name = "username"><br><br>
+      <input type = "password" placeholder = "Şifrə" name = "password"><br><br>
+      <button id = "register" onclick = "showup()">Giriş et</button>
+        </form>
+      </div></br><br>
+      </main>
+      <div align = "center">
+        <p class = "registered"><i class="fas fa-check"></i> Uğurla giriş etdiniz! </p>
+        <p class = "registered"><i class="fas fa-check"></i> E-mail və ya şifrə səhvdir! </p>
+   </div>
+    </body>
+  <style>
+    .register {
+      padding : 10px;
+      border-radius : 6px;
+      justify-content : center;
+      width : 25rem;
+      background : white;
+      padding : 50px;
+      margin : 300px auto;
+      transform : scale(1.46);
+      color : black;
+    }
+    
+    .registered {
+      position : fixed;
+      bottom : 0;
+      right : 0;
+      padding : 25px;
+      border-radius : 8px;
+      color : white;
+      display : none;
+      background : green;
+    }
+    
+    #register {
+      font-size : 25px;
+    }
+  </style>
+ <link rel = "stylesheet" href = "stil.css">
+  <script src = "server.js"></script>
+ <script>
+   var registerForm = document.querySelector("#formreg");
+   let registerBtn = document.querySelector("#register");
+   
+   registerForm.addEventListener((e) =>{
+     e.preventDefault()
+   })
+   
+   function showup(){
+     document.querySelector(".registered").style.display = "block";
+   }
+</script>
+  </html>

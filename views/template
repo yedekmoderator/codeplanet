@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <%- include('partials/blocks/menu.ejs') %>
+    <div align = "center">
+      <h1>Neon-Mail</h1>
+    </div>
+    <link rel = "stylesheet" href = "/stil.css">
+  </head>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partials/blocks/menu.ejs') %>
+    <h2>
+      <div align="center">
+        <h2>
+          Saytın Vəziyyəti : <br />
+          <link rel="stylesheet" href="stil.css" />
+        </h2>
+      </div>
+    </h2>
+  </head>
+  <body>
+    <div align = "center">
+      <div class = "statusLabel">
+        - Passport.js : Normaldır, Çökmə yoxdur.
+      </div>
+      <div class = "statusLabel">
+      - Mongoose Verilənlər Bazası : Bağlantı ( Orta ), Gecikmə( >= 60 ms )
+        </div>
+        <div class = "statusLabel">
+      - Data alınması : Yaxşıdır.
+          </div>
+          <div class = "statusLabel">
+      - Buttonlar : Error yoxdur.
+           </div> 
+            <div class = "statusLabel">
+      - Bağlantı : Normaldır.  
+            </div>  
+    </div>
+   </body>
+  <style>
+    .statusLabel {
+      color : black;
+      background : white;
+      width : 700px;
+      height : 100px;
+      margin : 20px;
+      border-radius : 6px;
+      padding : 15px;
+      border-left : 8px green solid;
+      text-align : center;
+    }
+  </style>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partials/blocks/menu.ejs') %>
+    <script src="https://kit.fontawesome.com/10a3b2acf9.js" crossorigin="anonymous"></script>
+    <div align = "center">
+      <h1>Neon Project istifadəçilərinin proqramlaşdırmaya dair sualları.</h1>
+    </div>
+    <link rel = "stylesheet" href = "stil.css">
+  </head>
+  <body>
+    <% data.forEach( note =>{ %>
+    <div align = "center" id = "note">
+      <div id = "basliq"><h1><%= note.title %></h1></div>
+      <div id = "tarix" align = "right"><h6><%= note.date.toLocaleDateString() %></h6></div>
+      <div id = "author"><%= note.username %></div>
+      <div id = "aciqlama"><%= note.description %></div>
+      <button id = "edit"><a href = "/posts/<%= note.id %>">Posta get</a></button>
+    </div>
+<% }) %>
+    <button id = "create"><a href = "/create-post"><i class="fas fa-plus"></i></a></button>
+  </body>
+  <style>
+    #note {
+      width : 600px;
+      height : 300px;
+      background : white;
+      border-radius : 8px;
+      color : black;
+      margin : auto;
+      align-items : center;
+      padding : 15px;
+      margin-bottom : 10px;
+    }
+    
+    #tarix {
+      position : relative;
+      top : 10px;
+    }
+    
+    #edit {
+      position : relative;
+      left : 220px;
+      top : 20px;
+    }
+    
+    #create {
+      position : fixed;
+      right : 30px;
+      bottom : 30px;
+      border-radius : 100%;
+      width : 100px;
+      height : 100px;
+      font-size : 20px;
+    }
+    
+    #note div {
+      color : black;
+      display : flex;
+      flex-direction : column;
+    }
+  </style>
+</html>
