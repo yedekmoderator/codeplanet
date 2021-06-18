@@ -18,11 +18,10 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now()
   },
-  token: String,
   avatar: {
-    type: String
+    type: String,
+    default : "https://cdn.discordapp.com/attachments/823558223725461524/841740941086031882/1174215797dec302c416c52eaac5fc46.png"
   },
-  socketId: String,
   status: {
     type: String,
     default: "Onlayndır."
@@ -30,9 +29,6 @@ const UserSchema = new mongoose.Schema({
   vip: {
     type: Boolean,
     default: false
-  },
-    username : {
-    type: String
   },
   friends: Array,
   mails: Array
