@@ -4,7 +4,7 @@ let GuildSchema = new mongoose.Schema({
    namg : String,
    description : String,
    vanity : String,
-   tier : Numbeg
+   tier : Number
 })
 
 let Guild = mongoose.model("GuildSchema",GuildSchema);

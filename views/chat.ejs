@@ -105,9 +105,6 @@
         }
       }
       
-      if(messageForm.value === "/total"){
-        return createBotMessage(`İstifadəçi sayı : <%= totalUsers %>`)
-      }
           
       if(messageForm.value.startsWith("/qutu-aç")){
         socket.emit("qutu-ac", name)
@@ -143,18 +140,7 @@
       chatContainer.scrollTop = chatContainer.scrollHeight;
       }
    });
-    
-   /* messageForm.addEventListener("keyup", ()=>{
-    let typer = document.querySelector(".typing");
-    typer.innerHTML = name;
-    typer.style.display = "block";
-    })
-    
-    messageForm.addEventListener("keydown", () =>{
-      let type = document.querySelector(".typing");
-      type.style.display = "none"
-    })
-    */
+  
     
     
     socket.on("connected", () =>{
@@ -249,7 +235,6 @@
       let preview = document.getElementById("sekil");
       
        reader.addEventListener("load", function () {
-    // convert image file to base64 string
          createImage(reader.result)
     }, false);
 
@@ -272,12 +257,12 @@
   </script>
   <style>
     #chat-container {
-      width : 700px;
+      width : 1000px;
       border-radius : 8px;
       background : #fff;
       margin : auto;
       padding : 25px;
-      height: 500px;
+      height: 600px;
       overflow: auto;
       overflow-x: hidden;
       color : black;
@@ -286,12 +271,12 @@
     }
     
     #notify {
-      width : 700px;
+      width : 1000px;
       border-radius : 8px;
       background : #fff;
       margin-top : 200px auto;
       padding : 25px;
-      height : 500px;
+      height : 600px;
       overflow : scroll;
       overflow-x : hidden;
       color : black;
@@ -303,8 +288,11 @@
       padding : 15px;
       border-radius : 8px;
       width : 300px;
-      max-height : 1200px;
-      margin-left : 380px;
+      transform : scale(1.09);
+      width : 250px;
+      height : 50px;
+      position : relative;
+      left : 340px;
     }
     
     .message2 {
@@ -353,7 +341,7 @@
       bottom : 25px;
       transform : scale(1.5);
       width : 100%;
-      right : 30px;
+      right : 20px;
     }
     
     #chat-container form input {

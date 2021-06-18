@@ -5,24 +5,16 @@ const db = require("quick.db");
 const key = require("./database/authKey.js");
 const User = require("./database/User").User;
 const UserSchema = require("./database/User").forpass;
-const Discord = require("discord.js");
-const client = new Discord.Client();
-const randomImage = require("random-image-placeholder");
 const fs = require("fs");
-const favicon = require("serve-favicon");
+const axios = require("axios")
 const Mails = require("./database/UserMails.js");
 const Posts = require("./database/Posts.js");
 const fetch = require("node-fetch");
 const LocalStrategy = require("passport-local").Strategy;
 const passport = require("passport");
 const mongoose = require("mongoose");
-const accounts = require("./configs/accounts.json");
-const ideadb = require("./configs/ideas.json");
 const socketio = require("socket.io");
 const PORT = process.env.PORT || 3000;
-let vipKeys = ["675836", "xDFs@56", "1292902XS"];
-client.on("ready", () => console.log("The bot is ready for Projecting!"));
-client.login(process.env.TOKEN);
 
 const app = express();
 const server = app.listen(PORT, function() {
@@ -194,68 +186,17 @@ app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
 app.set("port", process.env.PORT || 3000);
 
-app.post("/report", async (req, res) => {
-  const send = require("gmail-send")({
-    user: "neonsters@gmail.com",
-    pass: process.env.SECRET,
-    to: req.body.bugmail,
-    subject: "Xəta Bildirildi."
-  });
+const clientID = "06e836190218f5cb7e27"
+const clientSecret = "f74c360e1e6d63500df7ef37d6afd58c493d9928"
 
-  send(
-    {
-      text: `Hey, Salam, ${req.body.bugmail
-        .split("@")
-        .shift()}! Mən Neon Project Saytının Developerinin botu Project Alphayam! Probleminiz Sahibimə çatdırıldı, tez bir zamanda cavab verəcəyik! 
+app.get("/login/github/callback", (req, res) =>{
+   const url = `https://github.com/login/oauth/authorize?client_id=${clientID}`;
+  axios({
+    method : "GET",
+    url : url
+  })
+})
 
-  Öncəliklə sizə bu mövzuda bizə xəta bildirdiyiniz üçün təşəkkür edirik! Göstərdiyiniz xəta aşağıdaki kimi yazılıb :
-
-
-  ${req.body.bugvalue}
-
-
-
-Hörmətlə,
-
-Neon Project Botu,
-
-Project Alpha.
-`
-    },
-    (error, result, fullResult) => {
-      if (error) console.error(error);
-      console.log(fullResult);
-    }
-  );
-
-  res.redirect("/");
-});
-
-app.post("/set-avatar", async (req, res) => {
-  console.log("dn");
-});
-
-app.post("/idea", async (req, res) => {
-  let obj = {
-    table: []
-  };
-
-  let ideaData = {
-    idea: req.body.ideavalue,
-    mail: req.body.ideamail
-  };
-
-  fs.readFile("./configs/ideas.json", (err, data) => {
-    if (err) throw err;
-
-    let json = JSON.parse(data);
-
-    json.table.push(ideaData);
-
-    fs.writeFileSync("./configs/ideas.json", JSON.stringify(json));
-  });
-  res.redirect("/");
-});
 
 app.post("/search", async (req, res) => {
   if (!req.body.data) {
@@ -267,7 +208,7 @@ app.post("/search", async (req, res) => {
 
     console.log(userId);
 
-    res.redirect("/search/profile/" + userId[0].username.split("@").shift());
+    res.redirect("/search/profile/" + userId[0].username);
   }
 });
 
@@ -312,7 +253,7 @@ app.post("/register", async (req, res) => {
         return res.redirect("back")
     } else {
         user = new User({
-            name: req.body.name,
+            username: req.body.username,
             email: req.body.email,
             password: req.body.password
         });
@@ -419,8 +360,7 @@ app.get("/status", async (request, response) => response.render("status"));
 app.get("/chat", authorized, async (req, res) =>
   res.render("chat", {
     user: req.user,
-    clients: clients,
-    vipKeys: vipKeys
+    clients: clients
   })
 );
 
