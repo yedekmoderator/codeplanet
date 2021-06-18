@@ -2,6 +2,7 @@
   <head>
 <link rel = "stylesheet" href = "stil.css">
     <script src="https://kit.fontawesome.com/10a3b2acf9.js" crossorigin="anonymous"></script>
+    <meta name="yandex-verification" content="c973dcf9084ed0b7" />
   </head>
   <body>
     <%- include('partials/blocks/menu.ejs') %>
@@ -31,7 +32,7 @@
             </div>
           </div>
       
-          <div class="card" style="width: 18rem;" align = "center">
+          <div id = "3" class="card" style="width: 18rem;" align = "center">
             <div class="card-body">
               <h2 class="card-title">Zəngin hesab konfiqurasiyası</h2>
               <h6 class="card-subtitle mb-2 text-muted">Hesablar</h6>
@@ -68,31 +69,9 @@
         </div>
       </div>
     </div>
-<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
-
-    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-analytics.js"></script>
-
-    <!-- Add Firebase products that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-performance.js"></script>
-<script>
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  var firebaseConfig = {
-    apiKey: "AIzaSyBh25YfczPghUHK9CLt7GvIPYPHPDbNkc8",
-    authDomain: "codeplanet-9ff69.firebaseapp.com",
-    projectId: "codeplanet-9ff69",
-    storageBucket: "codeplanet-9ff69.appspot.com",
-    messagingSenderId: "843542752011",
-    appId: "1:843542752011:web:8e70b697356292fdb4500e",
-    measurementId: "G-C2HNMFFMPE"
-  };
-firebase.initializeApp(firebaseConfig);
-      var analytics = firebase.analytics();
-      var perf = firebase.performance();
-</script>
+    <footer>
+     <%- include('partials/blocks/footer.ejs') %>
+    </footer>
   </body>
   <footer>
    <section>
@@ -121,6 +100,10 @@ firebase.initializeApp(firebaseConfig);
       width : 50%;
       color : black;
       padding : 25px;
+    }
+    
+    .container-2-left h2 {
+      text-align : center;
     }
     
     
@@ -182,6 +165,14 @@ firebase.initializeApp(firebaseConfig);
         display: inline-block;
         position : absolute;
   }
+    
+     #circle:hover {
+        background-color: red;
+  }
+    
+    #circle:active + .editor {
+     display : none;
+ }
   </style>
   <script src = "script.js"></script>
 </html>
