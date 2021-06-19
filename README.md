@@ -32,6 +32,10 @@ The platform which can teach you programming.
 ### CodePlanet Marketing
 * Sadiq - Advertiser
 
+### CodePlanet Data Analizers
+* Şahin - Data Analizer
+
+
 # Github
 
 * [Organization](https://github.com/codeplanett)
