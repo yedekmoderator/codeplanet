@@ -23,6 +23,7 @@ The platform which can teach you programming.
 
 ### CodePlanet Designers
 * Cansu - Project Designer
+* Nuray - Project Designer
 
 ### CodePlanet Idea Managers
 * Elnur - Idea Manager
