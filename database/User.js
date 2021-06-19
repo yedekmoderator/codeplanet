@@ -43,6 +43,5 @@ UserSchema.methods.validPassword = function(pwd) {
 
 const User = mongoose.model("User", UserSchema);
 module.exports = {
-  User: User,
-  forpass: UserSchema
+  User: User
 };
