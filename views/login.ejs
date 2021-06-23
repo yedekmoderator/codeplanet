@@ -15,6 +15,12 @@
       <input type = "password" placeholder = "Şifrə" name = "password"><br><br>
       <button id = "register" onclick = "showup()">Giriş et</button>
         </form>
+        <hr>
+        <div align = "center" class = "oauth">
+        Və ya bunlardan istifadə edərək giriş edin : <br><br>
+        <span class = "github-login"><i class="fab fa-github fa-2x"></i></span>&nbsp;
+        <i class="fab fa-google fa-2x"></i>
+        </div>
       </div></br><br>
       </main>
       <div align = "center">
@@ -51,17 +57,18 @@
     }
   </style>
  <link rel = "stylesheet" href = "stil.css">
-  <script src = "server.js"></script>
  <script>
    var registerForm = document.querySelector("#formreg");
    let registerBtn = document.querySelector("#register");
-   
-   registerForm.addEventListener((e) =>{
-     e.preventDefault()
-   })
-   
+   const github = document.querySelector('.github-login')
+
+
    function showup(){
      document.querySelector(".registered").style.display = "block";
    }
+   
+   github.addEventListener("click", () =>{
+  window.location.href = "https://codeplanet.glitch.me/login/github"
+  })
 </script>
   </html>

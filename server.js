@@ -55,20 +55,9 @@ io.on("connection", function(socket) {
   socket.on("duyuru", data => {
     io.emit("duyuru", data);
   });
-
-  socket.once("disconnect", () => {
-    socket.emit("disconnected");
-
-    socket.on("user-disconnection", name => {
-      socket.broadcast.emit(
-        "userDisconnection",
-        `${name} İstifadəçisi söhbət otağından ayrıldı.`
-      );
-    });
-  });
 });
 
-passport.use("passport-local",new passport_config(passport));
+passport.use("passport-local", new passport_config(passport));
 
 function authorized(req, res, next) {
   if (req.user) {
@@ -117,7 +106,7 @@ async function getGithubUser(token){
     }
   })
   
-  return await user.site_admin
+  return user.data
 }
 
 app.get('/login/github', (req, res) => {
@@ -144,9 +133,7 @@ const body = {
 
 app.post("/search", async (req, res) => {
   if (!req.body.data) {
-    res.render("profile-search", {
-      user: req.user
-    });
+    res.redirect("back")
   } else {
     let userId = await User.find({ username: req.body.data });
 
