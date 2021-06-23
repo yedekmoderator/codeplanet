@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
-const passportLocalMongoose = require("passport-local-mongoose");
 const passport = require("passport-local");
-const findOrCreate = require("mongoose-findorcreate");
 const key = require("./authKey.js").url;
 
 const UserSchema = new mongoose.Schema({
@@ -34,7 +32,6 @@ const UserSchema = new mongoose.Schema({
   mails: Array
 });
 
-UserSchema.plugin(findOrCreate);
 
 UserSchema.methods.validPassword = function(pwd) {
   // EXAMPLE CODE!

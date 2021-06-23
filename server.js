@@ -1,12 +1,10 @@
 const express = require("express");
 const session = require("express-session");
 const MongoStore = require("connect-mongo").default;
-const db = require("quick.db");
 const key = require("./database/authKey.js");
 const User = require("./database/User").User;
 const UserSchema = require("./database/User").forpass;
 const axios = require("axios");
-const Mails = require("./database/UserMails.js");
 const Posts = require("./database/Posts.js");
 const fetch = require("node-fetch");
 const passport = require("passport");
@@ -194,13 +192,8 @@ app.post("/register", async (req, res) => {
 
 app.get("/", async (request, response) => {
   response.render("index", { user: request.user });
-  let giris = await db.fetch(`giris`);
 
-  if (giris === null) await db.set(`giris`, 0);
-
-  let sayi = await db.add(`giris`, 1);
-
-  console.log(`${sayi} Kişi Ana Sayfaya Girdi.`);
+  console.log(` Kişi Ana Sayfaya Girdi.`);
 });
 
 app.get("/report", (req, res) => {
