@@ -9,8 +9,10 @@ const Posts = require("./database/Posts.js");
 const fetch = require("node-fetch");
 const passport = require("passport");
 const mongoose = require("mongoose");
-const passport_config = require("./configs/passport.js")
+const passport_config = require("./utils/passport.js")
 const socketio = require("socket.io");
+const getGithubUser = require("./utils/github.js")
+const importSocketConfig = require("./utils/socket-config.js")
 
 const app = express();
 const server = app.listen(3000, function() {
@@ -31,28 +33,7 @@ app.use(passport.session());
 const io = socketio(server);
 
 io.on("connection", function(socket) {
-  socket.emit("connected");
-
-  socket.on("user-connection", data => {
-
-    io.emit("userConnection", {
-      message:
-        "Yeni birisi söhbətə daxil oldu! Adı : " + data.split("@").shift(),
-      username: data
-    });
-  });
-
-
-  socket.on("message", obj => {
-    let name = obj.name;
-    let message = obj.message;
-
-    socket.broadcast.emit("message", { name: name, message: message });
-  });
-
-  socket.on("duyuru", data => {
-    io.emit("duyuru", data);
-  });
+  importSocketConfig(socket)
 });
 
 passport.use("passport-local", new passport_config(passport));
@@ -72,7 +53,7 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(id, done) {
   var userId = mongoose.Types.ObjectId(id);
   User.findById(id, function(err, user) {
-    return done(err, user);
+    return done(err, user)
   });
 });
 
@@ -95,17 +76,6 @@ app.set("port", process.env.PORT || 3000);
 
 const clientID = "06e836190218f5cb7e27";
 const clientSecret = "f74c360e1e6d63500df7ef37d6afd58c493d9928";
-
-
-async function getGithubUser(token){
-  let user = await axios.get("https://api.github.com/user", {
-    headers : {
-      Authorization : "token " + token
-    }
-  })
-  
-  return user.data
-}
 
 app.get('/login/github', (req, res) => {
   res.redirect(`https://github.com/login/oauth/authorize?client_id=${clientID}`);
