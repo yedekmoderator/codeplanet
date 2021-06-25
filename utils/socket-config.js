@@ -20,8 +20,8 @@ socket.emit("connected");
     socket.broadcast.emit("message", { name: name, message: message });
   });
 
-  socket.on("duyuru", data => {
-    io.emit("duyuru", data);
+  socket.on("duyuru", duyuruData => {
+    io.emit("duyuru", duyuruData);
   });
 }
 
