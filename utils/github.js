@@ -6,7 +6,6 @@ async function getGithubUser(token){
         Authorization : "token " + token
       }
     })
-    
     return user.data
 }
 
