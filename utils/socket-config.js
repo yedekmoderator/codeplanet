@@ -26,4 +26,5 @@ socket.emit("connected");
 }
 
 module.exports = {
-  importSocketConfi
+  importSocketConfig
+}

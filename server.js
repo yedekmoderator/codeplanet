@@ -12,7 +12,7 @@ const mongoose = require("mongoose");
 const passport_config = require("./utils/passport.js")
 const socketio = require("socket.io");
 const getGithubUser = require("./utils/github.js")
-const importSocketConfig = require("./utils/socket-config.js")
+const importSocketConfig = require("./utils/socket-config.js").importSocketConfig
 
 const app = express();
 const server = app.listen(3000, function() {
@@ -33,7 +33,7 @@ app.use(passport.session());
 const io = socketio(server);
 
 io.on("connection", function(socket) {
-  importSocketConfig(socket)
+  importSocketConfig(socket, io)
 });
 
 passport.use("passport-local", new passport_config(passport));
@@ -136,27 +136,27 @@ app.post(
   "/login",
   passport.authenticate("local", { failureRedirect: "/login" }),
   function(req, res) {
-    res.redirect("/profile/" + req.user.id);
+    res.redirect("/profile/" + request.user.id);
   }
 );
 
-app.post("/register", async (req, res) => {
-  let { username, email, password } = req.body;
+app.post("/register", async (request, response) => {
+  let { username, email, password } = request.body;
   if (!username || !email || !password) {
     return;
   }
 
-  let user = await User.findOne({ email: req.body.email });
+  let user = await User.findOne({ email: request.body.email });
   if (user) {
-    return res.redirect("back");
+    return response.redirect("back");
   } else {
     user = new User({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password
+      username: request.body.username,
+      email: request.body.email,
+      password: request.body.password
     });
     await user.save();
-    res.redirect("/login");
+    response.redirect("/login");
   }
 });
 
