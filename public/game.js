@@ -13,27 +13,12 @@ var compScore = document.getElementById("comp-score");
 var userwin = document.getElementById("winnerUser");
 var u = document.getElementById("u");
 
-var dataname = prompt("Adınız?");
-
 const options = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(dataname)
-};
-
-
-fetch('/dash', options);
-
-if(dataname === ""){
-  user.textContent = "İstifadəçi";
-  u.textContent = "İstifadəçi";
-} else {
-user.textContent = dataname;
-u.textContent = dataname;
-  fetch("/dash", options)
-  .then(res => res.json());
 };
 
 function convert(word){
