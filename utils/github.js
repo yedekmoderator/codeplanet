@@ -11,5 +11,5 @@ async function getGithubUser(token){
 }
 
 module.exports = {
-    getGithubUser
-};
+  getGithubUser : getGithubUser
+}

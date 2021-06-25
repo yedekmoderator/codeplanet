@@ -11,14 +11,15 @@ const passport = require("passport");
 const mongoose = require("mongoose");
 const passport_config = require("./utils/passport.js")
 const socketio = require("socket.io");
-const getGithubUser = require("./utils/github.js")
+const getGithubUser = require("./utils/github.js").getGithubUser
 const importSocketConfig = require("./utils/socket-config.js").importSocketConfig
 const declareSettings = require("./utils/express-settings.js")
-
+const settings = require("./configs/config.json")
 const app = express();
 const server = app.listen(3000, function() {
   console.log(`Listening on port 3000`);
 });
+const io = socketio(server);
 
 let sessionMiddleware = session({
   secret: "neon project",
@@ -28,7 +29,6 @@ let sessionMiddleware = session({
 
 declareSettings(app, express, sessionMiddleware, passport)
 
-const io = socketio(server);
 
 io.on("connection", function(socket) {
   importSocketConfig(socket, io)
@@ -255,3 +255,8 @@ app.get("/posts", authorized, async (req, res) => {
 app.get("/team", async(req, res) => res.render("team"));
 app.get("/register", (req, res) => res.render("register"));
 app.get("/login", (req, res) => res.render("login"));
+app.get("*", (req, res) => {
+  if(req.statusCode === 404){
+    res.render("404", { message : settings["404Message"]})
+  }
+})

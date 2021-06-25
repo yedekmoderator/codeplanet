@@ -1,3 +1,6 @@
 {
-  "authenticationKey": "29012007"
+  "locked" : false,
+  "errorMessage" : "Bilinməz bir xəta ilə qarşılaşdıq.",
+  "controlMessage": "Platform hal-hazırda baxımdadır.",
+  "404Message" : "Belə bir səhifə yoxdur."
 }
