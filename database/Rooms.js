@@ -1,7 +1,7 @@
 let mongoose = require("mongoose");
 
 let GuildSchema = new mongoose.Schema({
-   namg : String,
+   name : String,
    description : String,
    vanity : String,
    tier : Number
