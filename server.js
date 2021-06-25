@@ -13,6 +13,7 @@ const passport_config = require("./utils/passport.js")
 const socketio = require("socket.io");
 const getGithubUser = require("./utils/github.js")
 const importSocketConfig = require("./utils/socket-config.js").importSocketConfig
+const declareSettings = require("./utils/express-settings.js")
 
 const app = express();
 const server = app.listen(3000, function() {
@@ -25,10 +26,7 @@ let sessionMiddleware = session({
   saveUninitialized: true
 });
 
-app.use(sessionMiddleware);
-app.use(express.json());
-app.use(passport.initialize());
-app.use(passport.session());
+declareSettings(app, express, sessionMiddleware, passport)
 
 const io = socketio(server);
 
@@ -68,11 +66,6 @@ mongoose
 
 mongoose.set("useFindAndModify", false);
 mongoose.set("useCreateIndex", true);
-
-app.use(express.static(__dirname + "/public"));
-app.use(express.urlencoded({ extended: false }));
-app.set("view engine", "ejs");
-app.set("port", process.env.PORT || 3000);
 
 const clientID = "06e836190218f5cb7e27";
 const clientSecret = "f74c360e1e6d63500df7ef37d6afd58c493d9928";
