@@ -155,8 +155,6 @@ app.post("/register", async (request, response) => {
 
 app.get("/", async (request, response) => {
   response.render("index", { user: request.user });
-
-  console.log(` Kişi Ana Sayfaya Girdi.`);
 });
 
 app.get("/report", (req, res) => {

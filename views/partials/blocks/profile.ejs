@@ -1,23 +1,31 @@
 <link rel = "stylesheet" href = "stil.css">
+<div align = "center">
+  <h1>Xoş Gəlmişsiniz, <%= user.username %></h1>
+</div>
 <div class = "user-dash">
-  <div class = "profile-photo">
-    <img width = "100px;" src = "<%= user.avatar %>">
-  </div>
   <div class = "information">
-    İstifadəçi adı : <%= user.username %><br>
-    E-poçt : <%= user.email %><br>
-    Status : <%= user.status %><br>
+   <div class = "user-dash">
+    <br><br>
+  <span id = "pfp"><img width = "100px;" src = "<%= user.avatar %>"></span><br><br>
+    İstifadəçi adı : <%= user.username %></span><br><br>
+    <span id = "info">E-poçt : <%= user.email %></span><br><br>
+    <span id = "info">Status : <%= user.status %></span><br><br>
   </div>
 </div>
 <style>
   .information {
     width : 700px;
-    height : 400px;
+    height : 600px;
     background : white;
     color : black;
     border-radius : 5px;
-    font-size : 35px;
+    font-size : 40px;
     text-align : center;
+  }
+
+  #info {
+    margin : 30px;
+    padding : 15px;
   }
   
   .profile-photo {
